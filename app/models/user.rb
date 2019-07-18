@@ -5,13 +5,16 @@ class User < ApplicationRecord
   has_many :article_likes
 
   validates :user_name, presence: { message: '用户名不能为空' }, uniqueness: { message: '用户名已经存在' }, on: :create
-  validates :password, presence: { message: '密码不能为空' }, on: :create
+  validates :password, presence: { message: '密码不能为空' }
 
   # 修改密码
   def update_pwd(old_password, password)
-    if old_password == self.password
+    if validate_pwd(old_password)
       self.password = Digest::MD5.hexdigest(password)
       self.save
+      true
+    else
+      false
     end
   end
 

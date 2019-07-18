@@ -13,6 +13,13 @@ Rails.application.routes.draw do
           post :login
         end
       end
+      resources :users, only: [] do
+        collection do
+          get :info
+          post :modify_info
+          post :modify_pwd
+        end
+      end
     end
   end
 end
