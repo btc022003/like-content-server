@@ -11,6 +11,19 @@ module LikeContentServer
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.1
 
+    config.active_record.default_timezone = :local
+    config.time_zone = "Beijing"
+
+    config.i18n.load_path += Dir[Rails.root.join("config", "locales", "*.{rb,yml}").to_s]
+    config.i18n.default_locale = "zh-CN"
+
+    config.middleware.insert_before 0, Rack::Cors do
+      allow do
+        origins "*"
+        resource "/api/*", headers: :any, methods: [:get, :post, :put, :delete, :patch, :options]
+      end
+    end
+
     config.generators do |generator|
       generator.assets false
       generator.helper false
