@@ -1,2 +1,2 @@
 json.status 'y'
-json.data @articles
+json.info @articles

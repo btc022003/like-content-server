@@ -1,5 +1,8 @@
 class User < ApplicationRecord
   has_many :articles
+  has_many :article_comments
+  has_many :article_collections
+  has_many :article_likes
 
   validates :user_name, presence: { message: '用户名不能为空' }, uniqueness: { message: '用户名已经存在' }, on: :create
   validates :password, presence: { message: '密码不能为空' }, on: :create

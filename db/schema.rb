@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190718054917) do
+ActiveRecord::Schema.define(version: 20190718063622) do
 
   create_table "article_collections", force: :cascade do |t|
     t.integer "user_id"
@@ -49,6 +49,8 @@ ActiveRecord::Schema.define(version: 20190718054917) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "count_of_article_likes"
+    t.integer "count_of_article_collections"
+    t.integer "count_of_article_comments"
     t.index ["user_id"], name: "index_articles_on_user_id"
   end
 
@@ -62,6 +64,9 @@ ActiveRecord::Schema.define(version: 20190718054917) do
     t.string "qq"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "count_of_article_likes"
+    t.integer "count_of_article_collections"
+    t.integer "count_of_article_comments"
   end
 
 end

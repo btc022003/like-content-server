@@ -3,8 +3,9 @@ Rails.application.routes.draw do
   namespace :api, defaults: { format: :json } do
     namespace :v1 do
       resources :articles do
-        resources :article_comments
+        resources :article_comments, only: [:index, :create, :destroy]
         resources :article_likes, only: [:create, :destroy]
+        resources :article_collections, only: [:create, :destroy]
       end
       resources :auth, only: [] do
         collection do
