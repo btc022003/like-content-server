@@ -4,7 +4,7 @@ require "jwt"
 # jwt
 class Token
   class << self
-    def generate(user, is_card = false)
+    def generate(user)
       encode(
         mobile: user.mobile,
         id: user.id,

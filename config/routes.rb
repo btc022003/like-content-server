@@ -4,6 +4,13 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :articles do
         resources :article_comments
+        resources :article_likes, only: [:create, :destroy]
+      end
+      resources :auth, only: [] do
+        collection do
+          post :reg
+          post :login
+        end
       end
     end
   end

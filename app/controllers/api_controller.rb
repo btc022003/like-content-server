@@ -1,5 +1,5 @@
 class ApiController < ActionController::Base
-
+  # 基础控制器
   def authenticate!
     http_token ||= if request.headers["Authorization"].present?
                      request.headers["Authorization"].split(" ").last
