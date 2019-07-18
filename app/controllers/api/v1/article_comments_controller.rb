@@ -26,7 +26,7 @@ class Api::V1::ArticleCommentsController < ApiController
 
   def destroy
     article = Article.find(params[:article_id])
-    ac = article.article_comments.where('id=? and user_id=?', params[:id], current_user.id)
+    ac = article.article_comments.where('id=? and user_id=?', params[:id], current_user.id).first
     if ac.present?
       if ac.destroy
         render_json('y', '操作成功')

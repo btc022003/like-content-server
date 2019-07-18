@@ -2,7 +2,10 @@ class Api::V1::ArticlesController < ApiController
   before_action :authenticate!, except: [:index]
 
   def index
-    @articles = Article.order('id desc')
+    @articles = Article.select(:id, :title, :descriptions,
+      :cover_img, :count_of_article_collections,
+      :count_of_article_comments,
+      :count_of_article_likes).order('id desc')
     if params[:title].present?
       @articles = @articles.where('title LIKE ?', '%#{params[:title]}%')
     end
