@@ -3,9 +3,10 @@ class Api::V1::AuthController < ApiController
     user = User.new params.permit(:user_name, :nick_name, :avatars, :password)
     user.password = Digest::MD5.hexdigest(user.password) if user.password.present?
     if user.save
-      render_json('y', '操作成功')
+      token = Token.generate(user)
+      render_json('y', '操作成功', token)
     else
-      render_json('n', '操作失败',  user.errors.full_messages)
+      render_json('n', '操作失败', user.errors.full_messages)
     end
   end
 

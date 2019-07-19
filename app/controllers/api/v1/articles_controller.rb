@@ -37,6 +37,7 @@ class Api::V1::ArticlesController < ApiController
       @article.title = params[:title]
       @article.content = params[:content]
       @article.descriptions = params[:descriptions]
+      @article.cover_img = params[:cover_img]
       if @article.save
         render_json('y', '操作成功')
       else

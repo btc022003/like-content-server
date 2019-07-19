@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>like-content-app</title>
+  <style>
+    .rec {
+      width: 200px;
+      height: 200px;
+      background-color: deeppink;
+    }
+
+    .animate {
+      transition: width 2s;
+
+    }
+
+  </style>
+</head>
+
+<body>
+  <div class="rec animate"></div>
+  <button onclick="transformHandle()">变</button>
+  <!-- <button onclick="sendReq()">发送</button> -->
+  <script src="https://cdn.bootcss.com/axios/0.19.0/axios.min.js"></script>
+  <script>
+    // function sendReq() {
+    //   axios.post('/api/v1/auth/login', {
+    //     i: {
+    //       name: 'Tom',
+    //       age: 18,
+    //       friends: ['Jerry', 'Lucas']
+    //     }
+    //   })
+    // }
+
+    function transformHandle() {
+      var rec = document.querySelector('.rec')
+      rec.style.width = rec.clientWidth + 100 + 'px'
+    }
+
+  </script>
+  <script>
+  </script>
+</body>
+
+</html>

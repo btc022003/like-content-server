@@ -14,8 +14,8 @@ module LikeContentServer
     config.active_record.default_timezone = :local
     config.time_zone = "Beijing"
 
-    config.i18n.load_path += Dir[Rails.root.join("config", "locales", "*.{rb,yml}").to_s]
-    config.i18n.default_locale = "zh-CN"
+    # config.i18n.load_path += Dir[Rails.root.join("config", "locales", "*.{rb,yml}").to_s]
+    # config.i18n.default_locale = "zh-CN"
 
     config.middleware.insert_before 0, Rack::Cors do
       allow do
