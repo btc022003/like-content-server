@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190718063622) do
+ActiveRecord::Schema.define(version: 20190721100732) do
 
   create_table "article_collections", force: :cascade do |t|
     t.integer "user_id"
@@ -67,6 +67,7 @@ ActiveRecord::Schema.define(version: 20190718063622) do
     t.integer "count_of_article_likes"
     t.integer "count_of_article_collections"
     t.integer "count_of_article_comments"
+    t.integer "count_of_articles"
   end
 
 end

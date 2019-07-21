@@ -1,5 +1,5 @@
 class Api::V1::ArticlesController < ApiController
-  before_action :authenticate!, except: [:index]
+  before_action :authenticate!, except: [:index, :show]
 
   def index
     @articles = Article.select(:id, :title, :descriptions,
@@ -18,6 +18,7 @@ class Api::V1::ArticlesController < ApiController
 
   def show
     @article = Article.find(params[:id])
+    @article.content = @article.content.gsub('src="/uploads', 'src="' + self_server_url + '/uploads')
     render_json('y', '获取数据成功', @article)
   end
 
@@ -25,7 +26,7 @@ class Api::V1::ArticlesController < ApiController
     @article = Article.new article_params
     @article.user_id = current_user.id
     if @article.save
-      render_json('y', '操作成功')
+      render_json('y', '操作成功', { id: @article.id })
     else
       render_json('n', '操作失败', @article.errors.full_messages)
     end

@@ -14,5 +14,8 @@ class Article < ApplicationRecord
     self.count_of_article_likes ||= 0 if has_attribute?(:count_of_article_likes)
     self.count_of_article_collections ||= 0 if has_attribute?(:count_of_article_collections)
     self.count_of_article_comments ||= 0 if has_attribute?(:count_of_article_comments)
+    # if self.content.present?
+    #   self.content = self.content.gsub('src="/uploads', 'src="http://localhost:3000/uploads')
+    # end
   end
 end

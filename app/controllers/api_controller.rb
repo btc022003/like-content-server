@@ -24,4 +24,8 @@ class ApiController < ActionController::Base
     def current_user
       User.find(@auth_token[0]['id'])
     end
+
+    def self_server_url
+      request.protocol + request.host_with_port
+    end
 end
