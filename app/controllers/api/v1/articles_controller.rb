@@ -5,7 +5,8 @@ class Api::V1::ArticlesController < ApiController
     @articles = Article.select(:id, :title, :descriptions,
       :cover_img, :count_of_article_collections,
       :count_of_article_comments,
-      :count_of_article_likes).order('id desc')
+      :count_of_article_likes,
+      :user_id).includes(:user).order('id desc')
     if params[:title].present?
       @articles = @articles.where('title LIKE ?', '%#{params[:title]}%')
     end
